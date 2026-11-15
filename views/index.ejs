@@ -1,26 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Haikus for Mona</title>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Haikus for Mona">
-    <meta property="og:description" content="Some of the best haikus you'll ever read about our rescue dog June">
-    <meta property="og:image" content="/images/sunlight.jpg">
+    <meta name="theme-color" content="#f5f3ee">
+    <meta name="description" content="A little collection of haiku and everyday observations by Nesru Michael.">
+    <meta property="og:title" content="Small Hours — notes by Nesru Michael">
+    <meta property="og:description" content="A little collection of haiku and everyday observations by Nesru Michael.">
+    <title>Small Hours — notes by Nesru Michael</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Haikus for Mona</h1>
-    <div>
-      <% for(var i=0; i < haikus.length; i++) { %>
-        <img
-          class="mona-images"
-          src="images/<%= haikus[i].image %>" />
-        <div 
-          class="haiku-containers">
-          <p 
-            class="haikus"
-          ><%- haikus[i].text %></p>
+    <a class="skip-link" href="#journal">Skip to the journal</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Small Hours home">small<span>hours</span><i aria-hidden="true">.</i></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#journal">The journal</a>
+        <a href="#about">About Nesru Michael</a>
+      </nav>
+      <a class="header-note" href="#journal"><span class="status-dot" aria-hidden="true"></span> a little light, lately</a>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">A PERSONAL JOURNAL · KEPT BY NESRU MICHAEL</p>
+        <h1 id="page-title">Small things,<br><em>held a little longer.</em></h1>
+        <div class="intro-bottom">
+          <p>A growing collection of small poems and ordinary moments worth keeping. Written slowly, somewhere between the rain and the next cup of tea.</p>
+          <a class="text-link" href="#journal">Wander through the notes <span aria-hidden="true">↓</span></a>
         </div>
-      <% } %>
-    </div>
+        <span class="intro-mark" aria-hidden="true">M.</span>
+      </section>
+
+      <section class="journal" id="journal" aria-labelledby="journal-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE NOTEBOOK</p>
+            <h2 id="journal-title">A few recent pages</h2>
+          </div>
+          <p class="entry-count"><%= haikus.length %> little moments</p>
+        </div>
+        <div class="entry-list">
+          <% for (var i = 0; i < haikus.length; i++) { %>
+            <article class="entry" id="note-<%= i + 1 %>">
+              <div class="entry-index"><span><%= String(i + 1).padStart(2, '0') %></span><span class="entry-rule" aria-hidden="true"></span></div>
+              <div class="entry-copy">
+                <p class="entry-label">A SMALL OBSERVATION</p>
+                <p class="haiku"><%= haikus[i].text %></p>
+                <a class="entry-link" href="#about" aria-label="Read more about Nesru Michael, the author">A note from Nesru Michael <span aria-hidden="true">↗</span></a>
+              </div>
+              <figure class="entry-image">
+                <img src="/images/<%= encodeURIComponent(haikus[i].image) %>" alt="An illustrated companion to the poem: <%= haikus[i].text.replace(/\n/g, ' ') %>" loading="lazy">
+              </figure>
+            </article>
+          <% } %>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">A LITTLE ABOUT THIS SPACE</p>
+        <div class="about-content">
+          <h2 id="about-title">Hello, I’m Nesru Michael.</h2>
+          <p>This is where I leave the little things I don’t want to forget: a rainy walk, a song that stayed on repeat, the quiet satisfaction of getting outside. Thanks for being here for a minute.</p>
+          <a class="text-link" href="mailto:nesrumichael@gmail.com">Email Nesru Michael <span aria-hidden="true">↗</span></a>
+        </div>
+        <span class="about-flower" aria-hidden="true">✳</span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="/" aria-label="Small Hours home">small<span>hours</span><i aria-hidden="true">.</i></a>
+      <p>Made of moments, and a little bit of ink.</p>
+      <a href="#page-title">Back to the top ↑</a>
+    </footer>
+  </body>
 </html>
